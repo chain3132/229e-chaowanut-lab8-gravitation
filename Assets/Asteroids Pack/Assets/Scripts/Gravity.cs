@@ -18,10 +18,7 @@ public class Gravity : MonoBehaviour
             otherObjectList = new List<Gravity>();
         }
         otherObjectList.Add(this);
-        if (!isPlanet)
-        {
-            rb.AddForce(Vector3.left * orbitSpeed);
-        }
+        
     }
 
     void Attract(Gravity other)
@@ -42,6 +39,11 @@ public class Gravity : MonoBehaviour
             {
                 Attract(obj);
             }
+        }
+        if (!isPlanet)
+        {
+            rb.AddRelativeForce(Vector3.left * orbitSpeed);
+            
         }
     }
 }
